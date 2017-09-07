@@ -1,19 +1,13 @@
 # Reproducible Research: Peer Assessment 1
 
 
+
 ## Loading and preprocessing the data
 
 1. Download the data if not exists and unzip the data.
 
 ```r
 library(knitr)
-```
-
-```
-## Warning: package 'knitr' was built under R version 3.3.3
-```
-
-```r
 setwd("C:/Users/Sourav/Documents/Technical/Data Science/Coursera Data Science Specialization/Coursera_05_Reproducible Research/data")
 if (!file.exists("./activity.zip"))
 {
@@ -46,18 +40,11 @@ actdatclean <- actdat[complete.cases(actdat[,1]),]
 ```r
 acttot <- aggregate(steps~date,data=actdatclean,sum)
 library(ggplot2)
-```
-
-```
-## Warning: package 'ggplot2' was built under R version 3.3.3
-```
-
-```r
 g <- ggplot(acttot,aes(date,steps))
 g + geom_bar(stat = "identity") + geom_line(color="blue") + ggtitle("Total number of steps-day wise")
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-2-1.png)<!-- -->
+<div class="rimage center"><img src="fig/unnamed-chunk-2-1.png" class="plot" /></div>
 
 2. Make a histogram of the total number of steps taken each day
 
@@ -67,11 +54,7 @@ g1 <- g1 + geom_histogram() + labs(title="Histogram of the Total number of steps
 g1
 ```
 
-```
-## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
-```
-
-![](PA1_template_files/figure-html/unnamed-chunk-3-1.png)<!-- -->
+<div class="rimage center"><img src="fig/unnamed-chunk-3-1.png" class="plot" /></div>
 
 3. The  mean and median of the total number of steps taken per day.
 
@@ -91,7 +74,7 @@ g <- ggplot(dly_actp,aes(interval,steps))
 g + geom_line(color="blue") + ggtitle("Time series plot of the 5-minute interval and the average number of steps taken")
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-5-1.png)<!-- -->
+<div class="rimage center"><img src="fig/unnamed-chunk-5-1.png" class="plot" /></div>
 
 2. Which 5-minute interval, on average across all the days in the dataset, contains the maximum number of steps?
 
@@ -100,7 +83,7 @@ dly_actp[which.max(dly_actp$steps),][[1]]
 ```
 
 ```
-## [1] 835
+[1] 835
 ```
 
 
@@ -113,7 +96,7 @@ dim(missing)[1]
 ```
 
 ```
-## [1] 2304
+[1] 2304
 ```
 
 2. Devise a strategy for filling in all of the missing values in the dataset. The strategy does not need to be sophisticated. For example, you could use the mean/median for that day, or the mean for that 5-minute interval, etc.
@@ -126,13 +109,13 @@ head(actdat)
 ```
 
 ```
-##   steps       date interval
-## 1    NA 2012-10-01        0
-## 2    NA 2012-10-01        5
-## 3    NA 2012-10-01       10
-## 4    NA 2012-10-01       15
-## 5    NA 2012-10-01       20
-## 6    NA 2012-10-01       25
+  steps       date interval
+1    NA 2012-10-01        0
+2    NA 2012-10-01        5
+3    NA 2012-10-01       10
+4    NA 2012-10-01       15
+5    NA 2012-10-01       20
+6    NA 2012-10-01       25
 ```
 
 ```r
@@ -140,13 +123,13 @@ head(dly_actp)
 ```
 
 ```
-##   interval     steps
-## 1        0 1.7169811
-## 2        5 0.3396226
-## 3       10 0.1320755
-## 4       15 0.1509434
-## 5       20 0.0754717
-## 6       25 2.0943396
+  interval     steps
+1        0 1.7169811
+2        5 0.3396226
+3       10 0.1320755
+4       15 0.1509434
+5       20 0.0754717
+6       25 2.0943396
 ```
 
 ```r
@@ -163,13 +146,13 @@ head(actnonadat)
 ```
 
 ```
-##         steps       date interval
-## 1   1.7169811 2012-10-01        0
-## 63  0.3396226 2012-10-01        5
-## 128 0.1320755 2012-10-01       10
-## 205 0.1509434 2012-10-01       15
-## 264 0.0754717 2012-10-01       20
-## 327 2.0943396 2012-10-01       25
+        steps       date interval
+1   1.7169811 2012-10-01        0
+63  0.3396226 2012-10-01        5
+128 0.1320755 2012-10-01       10
+205 0.1509434 2012-10-01       15
+264 0.0754717 2012-10-01       20
+327 2.0943396 2012-10-01       25
 ```
 
 4. Make a histogram of the total number of steps taken each day
@@ -181,11 +164,7 @@ agractnonadat <- aggregate(steps~date,data=actnonadat,sum)
  g2
 ```
 
-```
-## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
-```
-
-![](PA1_template_files/figure-html/unnamed-chunk-10-1.png)<!-- -->
+<div class="rimage center"><img src="fig/unnamed-chunk-10-1.png" class="plot" /></div>
 
 5. Calculate and report the mean and median total number of steps 
 
@@ -206,22 +185,10 @@ The mean of the NA replaced dataset is 10766.19 and the median is 10766.19.
 
 ```r
 library(gridExtra)
-```
-
-```
-## Warning: package 'gridExtra' was built under R version 3.3.3
-```
-
-```r
 grid.arrange(g1, g2, ncol = 2)
 ```
 
-```
-## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
-## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
-```
-
-![](PA1_template_files/figure-html/unnamed-chunk-12-1.png)<!-- -->
+<div class="rimage center"><img src="fig/unnamed-chunk-12-1.png" class="plot" /></div>
 
 ## Are there differences in activity patterns between weekdays and weekends?
 
@@ -244,4 +211,4 @@ g <- ggplot(actnonadat_intrvl,aes(interval,steps))
 g + geom_line() + facet_grid(dayType~.) + ggtitle("Avg steps at Intervals during weekdays and weekends")
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-14-1.png)<!-- -->
+<div class="rimage center"><img src="fig/unnamed-chunk-14-1.png" class="plot" /></div>
