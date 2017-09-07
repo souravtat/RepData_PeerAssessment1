@@ -46,7 +46,7 @@ g <- ggplot(acttot,aes(date,steps))
 g + geom_bar(stat = "identity") + geom_line(color="blue") + ggtitle("Total number of steps-day wise")
 ```
 
-2. Make a histogram of the total number of steps taken each day
+2. Make a histogram of the total number of steps taken each day.
 ```{r}
 g1 <- ggplot(acttot,aes(steps))
 g1 <- g1 + geom_histogram() + labs(title="Histogram of the Total number of steps taken each day")
