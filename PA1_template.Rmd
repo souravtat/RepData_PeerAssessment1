@@ -7,7 +7,7 @@ output:
 
 ```{r total_steps_per_day_histogram, fig.keep="all", fig.show="asis"}
 ```
-## Loading and preprocessing the data
+## Loading and preprocessing the data 
 
 1. Download the data if not exists and unzip the data.
 ```{r preprocessing}

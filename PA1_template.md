@@ -1,7 +1,7 @@
-# Reproducible Research: Peer Assessment  1
+# Reproducible Research: Peer Assessment 1
 
 
-## Loading and preprocessing the data
+## Loading and preprocessing the data 
 
 1. Download the data if not exists and unzip the data.
 
@@ -59,7 +59,7 @@ g + geom_bar(stat = "identity") + geom_line(color="blue") + ggtitle("Total numbe
 
 ![](PA1_template_files/figure-html/unnamed-chunk-2-1.png)<!-- -->
 
-2. Make a histogram of the total number of steps taken each day
+2. Make a histogram of the total number of steps taken each day.
 
 ```r
 g1 <- ggplot(acttot,aes(steps))
